@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milubimsiskiphilla</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
 
     <nav class="side-menu" id="sideMenu">
         <div class="menu-header">
-            <h2>Поздравления</h2>
+            <h2>Меню</h2>
             <button class="close-btn" id="closeBtn">&times;</button>
         </div>
         <ul class="menu-list">
@@ -46,11 +46,19 @@
             <p class="hero-subtitle">Этот сайт сделан специально для тебя. Открой меню слева, чтобы увидеть поздравления от друзей.</p>
         </section>
 
-        <!-- Тот самый КАЗИК -->
-        <section class="casino-section">
-            <h3>Испытай удачу 🎲</h3>
-            <p class="casino-text">Нажми на кнопку, чтобы узнать предсказание на сегодня.</p>
-            <div id="wheel-result">...</div>
+        <!-- СЛОТ-МАШИНА -->
+        <section class="slot-machine">
+            <h3>🎰 Испытай удачу</h3>
+            <p class="slot-subtitle">Собери три одинаковых символа и получи поздравление!</p>
+            
+            <div class="slots-container">
+                <div class="slot" id="slot1">🍒</div>
+                <div class="slot" id="slot2">💎</div>
+                <div class="slot" id="slot3">🍋</div>
+            </div>
+
+            <div class="slot-message" id="slot-message">Нажми кнопку, чтобы начать!</div>
+
             <button id="spin-btn" class="casino-btn">Крутить</button>
         </section>
     </main>
