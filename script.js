@@ -8,25 +8,23 @@ function openMenu() {
     sideMenu.classList.add('open');
     overlay.classList.add('active');
 }
-
 function closeMenu() {
     sideMenu.classList.remove('open');
     overlay.classList.remove('active');
 }
-
 if (burgerBtn) {
     burgerBtn.addEventListener('click', openMenu);
     closeBtn.addEventListener('click', closeMenu);
     overlay.addEventListener('click', closeMenu);
 }
 
-// === СЛОТ-МАШИНА ===
+// === СЛОТ-МАШИНА И ЛАМПОЧКИ ===
 const spinBtn = document.getElementById('spin-btn');
 const slot1 = document.getElementById('slot1');
 const slot2 = document.getElementById('slot2');
 const slot3 = document.getElementById('slot3');
 const slotMessage = document.getElementById('slot-message');
-const lights = document.querySelectorAll('.light');
+const bulbs = document.querySelectorAll('.bulb');
 
 const symbols = ['🍒', '💎', '🍋', '7️⃣', '⭐', '🔔'];
 const winMessages = [
@@ -36,30 +34,24 @@ const winMessages = [
     "🌟 Ты просто создана для побед!",
     "🥂 За твою удачу! Ура!"
 ];
-
 function getRandomSymbol() {
     return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-// Функция мигания лампочек
-function flashLights() {
-    let count = 0;
-    const interval = setInterval(() => {
-        lights.forEach(l => l.classList.remove('active'));
-        setTimeout(() => {
-            lights.forEach(l => l.classList.add('active'));
-        }, 100);
-        
-        count++;
-        if (count > 10) {
-            clearInterval(interval);
-            lights.forEach(l => l.classList.remove('active'));
-        }
-    }, 200);
+// Включаем лампочки
+function startLights() {
+    bulbs.forEach(b => b.classList.add('active'));
+}
+// Выключаем лампочки
+function stopLights() {
+    bulbs.forEach(b => b.classList.remove('active'));
 }
 
 if (spinBtn) {
     spinBtn.addEventListener('click', () => {
+        // Выключаем лампочки перед новым спином
+        stopLights(); 
+        
         spinBtn.disabled = true;
         slotMessage.textContent = "Крутим... 🎰";
         slotMessage.style.color = "var(--text)";
@@ -91,10 +83,15 @@ if (spinBtn) {
                 
                 const randomMsg = winMessages[Math.floor(Math.random() * winMessages.length)];
                 slotMessage.textContent = randomMsg;
-                slotMessage.style.color = "var(--accent)";
+                slotMessage.style.color = "var(--yellow)";
                 
-                // Запускаем мигание при выигрыше
-                flashLights();
+                // ВКЛЮЧАЕМ ЛАМПОЧКИ И САЛЮТ
+                startLights();
+                startFireworks();
+                
+                // Выключаем лампочки через 5 секунд
+                setTimeout(stopLights, 5000);
+
             } else {
                 slot1.textContent = final1;
                 slot2.textContent = getRandomSymbol();
@@ -107,4 +104,100 @@ if (spinBtn) {
             spinBtn.disabled = false;
         }, 1500);
     });
+}
+
+
+// === САЛЮТ НА КАНВАСЕ ===
+const canvas = document.getElementById('fireworksCanvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationFrameId;
+    let isRunning = false;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const colors = ['#ffd700', '#db552f', '#f7efe9', '#ff69b4', '#4d9fff'];
+
+    class Particle {
+        constructor(x, y, color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.radius = Math.random() * 3 + 1;
+            this.velocity = {
+                x: (Math.random() - 0.5) * 10,
+                y: (Math.random() - 0.5) * 10
+            };
+            this.alpha = 1;
+            this.decay = Math.random() * 0.015 + 0.01;
+        }
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = this.alpha;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.restore();
+        }
+        update() {
+            this.x += this.velocity.x;
+            this.y += this.velocity.y;
+            this.velocity.x *= 0.98;
+            this.velocity.y *= 0.98;
+            this.alpha -= this.decay;
+        }
+    }
+
+    function createExplosion(x, y) {
+        for (let i = 0; i < 50; i++) {
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            particles.push(new Particle(x, y, color));
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((particle, index) => {
+            if (particle.alpha > 0) {
+                particle.update();
+                particle.draw();
+            } else {
+                particles.splice(index, 1);
+            }
+        });
+        
+        if (particles.length > 0 || isRunning) {
+            animationFrameId = requestAnimationFrame(animate);
+        } else {
+            cancelAnimationFrame(animationFrameId);
+        }
+    }
+
+    window.startFireworks = function() {
+        isRunning = true;
+        // Запускаем 5 залпов в разных местах
+        let count = 0;
+        const interval = setInterval(() => {
+            createExplosion(
+                Math.random() * canvas.width, 
+                Math.random() * (canvas.height * 0.6)
+            );
+            count++;
+            if (count >= 5) clearInterval(interval);
+        }, 300);
+
+        animate();
+        
+        // Останавливаем анимацию через 5 секунд, чтобы не грузить процессор
+        setTimeout(() => {
+            isRunning = false;
+        }, 5000);
+    };
 }
