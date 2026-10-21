@@ -289,51 +289,153 @@ body {
 }
 
 /* =========================================
-   СЛОТ-МАШИНА
+   НАСТОЯЩИЙ ИГРОВОЙ АВТОМАТ
    ========================================= */
-.slot-machine {
-    background-color: var(--card);
-    padding: 40px 20px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-    border: 2px solid var(--accent); /* Рамка как у автомата */
+.machine-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
 }
 
-.slot-machine h3 {
-    font-size: 2rem;
-    color: var(--text);
-    margin-bottom: 5px;
+.slot-machine {
+    background: linear-gradient(180deg, #2b0a1a, #1a0508); /* Градиент корпуса */
+    border: 4px solid var(--accent);
+    border-radius: 30px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(227, 91, 49, 0.2);
+    position: relative;
+}
+
+/* Лампочки сверху */
+.machine-lights {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.light {
+    width: 15px;
+    height: 15px;
+    background-color: #555;
+    border-radius: 50%;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+    transition: background-color 0.1s;
+}
+
+/* Класс для мигания (добавляется через JS) */
+.light.active {
+    background-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent), inset 0 0 5px #fff;
+}
+
+.machine-body {
+    background-color: #111;
+    border-radius: 15px;
+    padding: 20px;
+    border: 2px solid #333;
+}
+
+.machine-title {
+    text-align: center;
+    color: var(--accent);
+    font-size: 1.8rem;
     font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(227, 91, 49, 0.5);
 }
 
 .slot-subtitle {
-    color: rgba(254, 246, 244, 0.7);
-    margin-bottom: 30px;
-    font-size: 1rem;
+    text-align: center;
+    color: rgba(254, 246, 244, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+/* Экран */
+.screen {
+    background-color: #050505;
+    border: 3px solid #222;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: inset 0 0 30px rgba(0,0,0,1);
+    margin-bottom: 25px;
 }
 
 .slots-container {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
 .slot {
-    width: 100px;
-    height: 100px;
-    background-color: var(--bg);
-    border-radius: 15px;
+    width: 90px;
+    height: 110px;
+    background: linear-gradient(180deg, #fff, #ddd); /* Белый фон как у барабанов */
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3.5rem;
-    border: 3px solid rgba(227, 91, 49, 0.5);
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
-    transition: transform 0.1s;
+    border: 2px solid #888;
+    box-shadow: inset 0 -5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект тряски */
+.slot.spinning {
+    animation: shake 0.15s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+.slot-message {
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-weight: 700;
+    min-height: 40px;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(227, 91, 49, 0.5);
+}
+
+/* Кнопка Spin (Круглая и блестящая) */
+.casino-btn {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: -20px auto 0; /* Налетает на корпус */
+    background: radial-gradient(circle at 30% 30%, #ff8c5a, var(--accent), #a32e0f);
+    color: var(--text);
+    border: 4px solid #5a1906;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.1s;
+    text-transform: uppercase;
+    font-family: inherit;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.8), inset 0 -5px 15px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 10;
+}
+
+.casino-btn:active:not(:disabled) {
+    transform: scale(0.95) translateY(5px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.8), inset 0 -2px 5px rgba(0,0,0,0.5);
+}
+
+.casino-btn:disabled {
+    filter: grayscale(50%);
+    cursor: not-allowed;
 }
 
 /* Анимация тряски при вращении */
