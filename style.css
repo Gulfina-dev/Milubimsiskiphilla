@@ -84,7 +84,8 @@ body {
     font-weight: 900;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--dark); /* Темный текст на оранжевом */
+    /* БЫЛО: color: var(--dark); */
+    color: var(--text); /* СТАЛО: кремовый, как полоски */
 }
 
 /* Боковое меню */
