@@ -1,10 +1,9 @@
 /* Цвета */
 :root {
-    --bg: #fce4d6;       /* Светлый персиково-оранжевый фон */
-    --card: #3b1f1e;     /* Темные карточки и меню */
-    --accent: #e35b31;   /* Яркий оранжевый для кнопок */
-    --text: #fef6f4;     /* Кремовый текст на темном */
-    --text-dark: #3b1f1e;/* Темный текст на светлом фоне */
+    --bg: #2a1514;       /* Глубокий темный фон (как в казино) */
+    --card: #3b1f1e;     /* Цвет карточек и меню */
+    --accent: #e35b31;   /* Твой оранжевый акцент */
+    --text: #fef6f4;     /* Кремовый текст */
 }
 
 * {
@@ -16,13 +15,13 @@
 body {
     font-family: 'Montserrat', sans-serif; 
     background-color: var(--bg);
-    color: var(--text-dark);
+    color: var(--text);
     min-height: 100vh;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* Шапка (темная) */
+/* Шапка */
 .top-bar {
     position: fixed;
     top: 0;
@@ -33,7 +32,8 @@ body {
     padding: 20px 30px;
     background-color: var(--card); 
     z-index: 100;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-bottom: 2px solid var(--accent);
 }
 
 .burger {
@@ -62,13 +62,13 @@ body {
 
 .site-title {
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--text); 
 }
 
-/* Боковое меню (темное, выезжает) */
+/* Боковое меню */
 .side-menu {
     position: fixed;
     top: 0;
@@ -80,7 +80,7 @@ body {
     z-index: 200;
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 30px;
-    box-shadow: 10px 0 30px rgba(0,0,0,0.3);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.5);
 }
 
 .side-menu.open {
@@ -146,7 +146,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 150;
     opacity: 0;
     pointer-events: none;
@@ -175,10 +175,11 @@ body {
     width: 100%;
     max-width: 500px;
     margin: 0 auto 30px;
-    background-color: #ffffff; /* Белая подложка для гифки */
+    background-color: var(--card);
     border-radius: 20px;
     padding: 15px;
-    box-shadow: 0 10px 30px rgba(59, 31, 30, 0.15); /* Тень цвета карточки */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid rgba(227, 91, 49, 0.2);
 }
 
 .gif-placeholder {
@@ -186,24 +187,24 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px dashed rgba(227, 91, 49, 0.4);
+    border: 2px dashed rgba(227, 91, 49, 0.3);
     border-radius: 10px;
-    color: rgba(59, 31, 30, 0.5);
+    color: rgba(254, 246, 244, 0.5);
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    color: var(--card);
+    font-size: 3rem;
+    color: var(--text);
     margin-bottom: 15px;
-    font-weight: 700;
+    font-weight: 900;
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-dark);
+    font-size: 1.1rem;
+    color: var(--text);
     max-width: 600px;
     margin: 0 auto;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 /* Заголовки страницы друзей */
@@ -214,18 +215,22 @@ body {
 
 .page-header h2 {
     font-size: 2.5rem;
-    color: var(--card);
+    color: var(--text);
     margin-bottom: 15px;
     font-weight: 700;
 }
 
-.page-header p {
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    opacity: 0.8;
+.page-header h2 span {
+    color: var(--accent);
 }
 
-/* Карточки с фото (темные) */
+.page-header p {
+    font-size: 1.1rem;
+    color: var(--text);
+    opacity: 0.7;
+}
+
+/* Карточки с фото */
 .art-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -239,13 +244,14 @@ body {
     padding: 15px;
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 10px 30px rgba(59, 31, 30, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(227, 91, 49, 0.2);
 }
 
 .art-frame:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(227, 91, 49, 0.4);
+    box-shadow: 0 15px 40px rgba(227, 91, 49, 0.3);
 }
 
 .art-frame img {
@@ -263,13 +269,13 @@ body {
 }
 
 .back-link a {
-    color: var(--card);
+    color: var(--accent);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 2px solid var(--card);
+    border: 2px solid var(--accent);
     padding: 12px 25px;
     border-radius: 30px;
     transition: 0.3s;
@@ -277,38 +283,74 @@ body {
 }
 
 .back-link a:hover {
-    background-color: var(--card);
-    color: var(--bg);
-    box-shadow: 0 10px 20px rgba(59, 31, 30, 0.2);
+    background-color: var(--accent);
+    color: var(--text);
+    box-shadow: 0 0 20px rgba(227, 91, 49, 0.4);
 }
 
-/* Блок Казика (темная карточка на светлом фоне) */
-.casino-section {
+/* =========================================
+   СЛОТ-МАШИНА
+   ========================================= */
+.slot-machine {
     background-color: var(--card);
     padding: 40px 20px;
     border-radius: 20px;
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
-    box-shadow: 0 15px 40px rgba(59, 31, 30, 0.2);
-    border: 1px solid rgba(227, 91, 49, 0.2);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    border: 2px solid var(--accent); /* Рамка как у автомата */
 }
 
-.casino-section h3 {
-    font-size: 1.8rem;
+.slot-machine h3 {
+    font-size: 2rem;
     color: var(--text);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    font-weight: 900;
 }
 
-.casino-text {
+.slot-subtitle {
     color: rgba(254, 246, 244, 0.7);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 1rem;
 }
 
-#wheel-result {
-    font-size: 1.3rem;
+.slots-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.slot {
+    width: 100px;
+    height: 100px;
+    background-color: var(--bg);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    border: 3px solid rgba(227, 91, 49, 0.5);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    transition: transform 0.1s;
+}
+
+/* Анимация тряски при вращении */
+.slot.spinning {
+    animation: shake 0.2s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.slot-message {
+    font-size: 1.2rem;
     color: var(--accent);
-    font-weight: 600;
+    font-weight: 700;
     min-height: 60px;
     margin-bottom: 20px;
     display: flex;
@@ -320,26 +362,35 @@ body {
     background-color: var(--accent);
     color: var(--text);
     border: none;
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    font-weight: 700;
+    padding: 15px 50px;
+    font-size: 1.2rem;
+    font-weight: 900;
     border-radius: 30px;
     cursor: pointer;
     transition: 0.3s;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     font-family: inherit;
+    box-shadow: 0 4px 15px rgba(227, 91, 49, 0.4);
 }
 
-.casino-btn:hover {
+.casino-btn:hover:not(:disabled) {
     background-color: var(--text);
     color: var(--accent);
-    box-shadow: 0 0 20px rgba(254, 246, 244, 0.4);
+    box-shadow: 0 0 30px rgba(254, 246, 244, 0.6);
+    transform: scale(1.05);
+}
+
+.casino-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* Адаптив */
 @media (max-width: 600px) {
-    .hero-title { font-size: 2.5rem; }
-    .page-header h2 { font-size: 2rem; }
-    .site-title { font-size: 1rem; }
+    .hero-title { font-size: 2.2rem; }
+    .page-header h2 { font-size: 1.8rem; }
+    .site-title { font-size: 0.9rem; }
+    .slot { width: 80px; height: 80px; font-size: 2.5rem; }
+    .slot-machine { padding: 30px 10px; }
 }
