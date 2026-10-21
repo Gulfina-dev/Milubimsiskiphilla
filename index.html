@@ -46,21 +46,37 @@
             <p class="hero-subtitle">Этот сайт сделан специально для тебя. Открой меню слева, чтобы увидеть поздравления от друзей.</p>
         </section>
 
-        <!-- СЛОТ-МАШИНА -->
-        <section class="slot-machine">
-            <h3>🎰 Испытай удачу</h3>
-            <p class="slot-subtitle">Собери три одинаковых символа и получи поздравление!</p>
-            
-            <div class="slots-container">
-                <div class="slot" id="slot1">🍒</div>
-                <div class="slot" id="slot2">💎</div>
-                <div class="slot" id="slot3">🍋</div>
+                <!-- НАСТОЯЩИЙ ИГРОВОЙ АВТОМАТ -->
+        <div class="machine-wrapper">
+            <div class="slot-machine">
+                <!-- Лампочки сверху -->
+                <div class="machine-lights">
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                </div>
+
+                <div class="machine-body">
+                    <h3 class="machine-title">LUCKY BIRTHDAY</h3>
+                    <p class="slot-subtitle">Собери три одинаковых и получи поздравление!</p>
+                    
+                    <!-- Экран с барабанами -->
+                    <div class="screen">
+                        <div class="slots-container">
+                            <div class="slot" id="slot1">🍒</div>
+                            <div class="slot" id="slot2">💎</div>
+                            <div class="slot" id="slot3">🍋</div>
+                        </div>
+                        <div class="slot-message" id="slot-message">Нажми кнопку!</div>
+                    </div>
+                </div>
+                
+                <!-- Большая кнопка -->
+                <button id="spin-btn" class="casino-btn">SPIN</button>
             </div>
-
-            <div class="slot-message" id="slot-message">Нажми кнопку, чтобы начать!</div>
-
-            <button id="spin-btn" class="casino-btn">Крутить</button>
-        </section>
+        </div>
     </main>
 
     <script src="script.js"></script>
