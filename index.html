@@ -9,13 +9,15 @@
 </head>
 <body>
 
+    <!-- Канвас для салюта (лежит на фоне, не мешает кликам) -->
+    <canvas id="fireworksCanvas"></canvas>
+
     <header class="top-bar">
         <button class="burger" id="burgerBtn">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <!-- Вернули название -->
         <h1 class="site-title">НУЛЬ КАКАШКА</h1>
     </header>
 
@@ -47,20 +49,23 @@
             <p class="hero-subtitle">Этот сайт сделан специально для тебя. Открой меню слева, чтобы увидеть поздравления от друзей.</p>
         </section>
 
-        <!-- СЛОТ-МАШИНА -->
+        <!-- СЛОТ-МАШИНА С ЛАМПОЧКАМИ -->
         <div class="machine-wrapper">
             <div class="slot-machine">
-                <!-- Декоративная панель сверху -->
-                <div class="machine-top-panel">
-                    <div class="light"></div>
-                    <div class="light"></div>
-                    <div class="light"></div>
-                </div>
+                
+                <!-- Лампочки по периметру (8 штук) -->
+                <div class="bulb bulb-1"></div>
+                <div class="bulb bulb-2"></div>
+                <div class="bulb bulb-3"></div>
+                <div class="bulb bulb-4"></div>
+                <div class="bulb bulb-5"></div>
+                <div class="bulb bulb-6"></div>
+                <div class="bulb bulb-7"></div>
+                <div class="bulb bulb-8"></div>
 
                 <div class="machine-body">
                     <h3 class="machine-title">LUCKY BIRTHDAY</h3>
                     
-                    <!-- Экран с неоновой подсветкой -->
                     <div class="screen">
                         <div class="slots-container">
                             <div class="slot" id="slot1">🍒</div>
@@ -72,7 +77,6 @@
                     <div class="slot-message" id="slot-message">Нажми SPIN!</div>
                 </div>
                 
-                <!-- Объемная кнопка -->
                 <button id="spin-btn" class="casino-btn">SPIN</button>
             </div>
         </div>
