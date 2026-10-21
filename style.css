@@ -120,19 +120,18 @@ body {
     font-size: 1.2rem;
     font-weight: 900;
     text-transform: uppercase;
-    color: var(--dark);
+    color: var(--text); /* Сделали кремовым вместо темного */
 }
 
 .close-btn {
     background: none;
     border: none;
-    color: var(--dark);
+    color: var(--text); /* Кремовый крестик */
     font-size: 2rem;
     cursor: pointer;
 }
-
 .close-btn:hover {
-    color: var(--text);
+    color: var(--yellow); /* Желтый при наведении */
 }
 
 .menu-list {
@@ -153,14 +152,14 @@ body {
     display: block;
     padding: 12px 20px;
     border-radius: 12px;
-    background-color: var(--dark); /* Темный фон кнопки */
+    background-color: #4a1a22; /* Темно-вишневый (в тон фона сайта) */
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .menu-list a:hover {
-    background-color: #140a12; /* Еще темнее при наведении */
+    background-color: #2a1215; /* Еще темнее при наведении */
     color: var(--yellow); /* Текст становится желтым */
-    padding-left: 25px; /* Сдвиг вправо */
+    padding-left: 25px; 
 }
 
 .overlay {
