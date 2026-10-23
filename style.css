@@ -212,3 +212,9 @@ body {
     /* ВОТ НАША АНИМАЦИЯ */
     animation: floatImage 6s ease-in-out infinite; 
 }
+
+@keyframes floatImage {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
