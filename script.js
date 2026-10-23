@@ -194,3 +194,80 @@ if (canvas) {
         }, 5000);
     };
 }
+
+// === МИНИ-ИГРА "ПОЙМАЙ НУЛЬ" ===
+const startGameBtn = document.getElementById('start-game-btn');
+const gameArea = document.getElementById('game-area');
+const mole = document.getElementById('mole');
+const scoreDisplay = document.getElementById('score');
+const gameOverText = document.getElementById('game-over-text');
+
+let score = 0;
+let gameInterval;
+let isPlaying = false;
+
+if (startGameBtn) {
+    startGameBtn.addEventListener('click', () => {
+        if (isPlaying) return; // Если игра уже идет, ничего не делаем
+        
+        // Сброс игры
+        score = 0;
+        scoreDisplay.textContent = score;
+        isPlaying = true;
+        gameOverText.style.display = 'none';
+        startGameBtn.style.display = 'none'; // Прячем кнопку
+        gameArea.style.display = 'block'; // Показываем поле
+
+        // Функция появления Нуля
+        const showMole = () => {
+            if (score >= 10) {
+                // Победа!
+                clearInterval(gameInterval);
+                mole.style.display = 'none';
+                gameOverText.style.display = 'block';
+                isPlaying = false;
+                
+                // Возвращаем кнопку через 3 секунды
+                setTimeout(() => {
+                    startGameBtn.style.display = 'block';
+                    startGameBtn.textContent = "ЕЩЁ РАЗ";
+                    gameArea.style.display = 'none';
+                }, 3000);
+                return;
+            }
+
+            // Случайная позиция
+            const maxX = gameArea.offsetWidth - 100;
+            const maxY = gameArea.offsetHeight - 100;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            mole.style.left = randomX + 'px';
+            mole.style.top = randomY + 'px';
+            mole.style.display = 'block';
+
+            // Нуль исчезает через 1 секунду (1000 мс), если по нему не кликнули
+            setTimeout(() => {
+                if (mole.style.display === 'block' && isPlaying) {
+                    mole.style.display = 'none';
+                }
+            }, 1000);
+        };
+
+        // Запускаем появление каждые 1.2 секунды
+        gameInterval = setInterval(showMole, 1200);
+        
+        // Первое появление сразу
+        showMole();
+    });
+
+    // Клик по Нулю
+    mole.addEventListener('click', (e) => {
+        e.stopPropagation(); // Чтобы клик не срабатывал на поле
+        if (!isPlaying) return;
+
+        score++;
+        scoreDisplay.textContent = score;
+        mole.style.display = 'none'; // Прячем при клике
+    });
+}
