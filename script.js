@@ -195,7 +195,7 @@ if (canvas) {
     };
 }
 
-// === МИНИ-ИГРА "ПОЙМАЙ НУЛЬ" ===
+// === МИНИ-ИГРА "ПОЙМАЙ ЛИН" ===
 const startGameBtn = document.getElementById('start-game-btn');
 const gameArea = document.getElementById('game-area');
 const mole = document.getElementById('mole');
@@ -208,26 +208,22 @@ let isPlaying = false;
 
 if (startGameBtn) {
     startGameBtn.addEventListener('click', () => {
-        if (isPlaying) return; // Если игра уже идет, ничего не делаем
+        if (isPlaying) return; 
         
-        // Сброс игры
         score = 0;
         scoreDisplay.textContent = score;
         isPlaying = true;
         gameOverText.style.display = 'none';
-        startGameBtn.style.display = 'none'; // Прячем кнопку
-        gameArea.style.display = 'block'; // Показываем поле
+        startGameBtn.style.display = 'none'; 
+        gameArea.style.display = 'block'; 
 
-        // Функция появления Нуля
         const showMole = () => {
             if (score >= 10) {
-                // Победа!
                 clearInterval(gameInterval);
                 mole.style.display = 'none';
                 gameOverText.style.display = 'block';
                 isPlaying = false;
                 
-                // Возвращаем кнопку через 3 секунды
                 setTimeout(() => {
                     startGameBtn.style.display = 'block';
                     startGameBtn.textContent = "ЕЩЁ РАЗ";
@@ -236,7 +232,6 @@ if (startGameBtn) {
                 return;
             }
 
-            // Случайная позиция
             const maxX = gameArea.offsetWidth - 100;
             const maxY = gameArea.offsetHeight - 100;
             const randomX = Math.random() * maxX;
@@ -244,30 +239,37 @@ if (startGameBtn) {
 
             mole.style.left = randomX + 'px';
             mole.style.top = randomY + 'px';
+            
+            // Появление
             mole.style.display = 'block';
+            mole.classList.remove('mole-hide');
+            mole.classList.add('mole-show');
 
-            // Нуль исчезает через 1 секунду (1000 мс), если по нему не кликнули
+            // Исчезновение через 1 секунду с анимацией
             setTimeout(() => {
                 if (mole.style.display === 'block' && isPlaying) {
-                    mole.style.display = 'none';
+                    mole.classList.remove('mole-show');
+                    mole.classList.add('mole-hide');
+                    // Ждем окончания анимации и прячем
+                    setTimeout(() => { mole.style.display = 'none'; }, 200);
                 }
             }, 1000);
         };
 
-        // Запускаем появление каждые 1.2 секунды
         gameInterval = setInterval(showMole, 1200);
-        
-        // Первое появление сразу
         showMole();
     });
 
-    // Клик по Нулю
     mole.addEventListener('click', (e) => {
-        e.stopPropagation(); // Чтобы клик не срабатывал на поле
+        e.stopPropagation();
         if (!isPlaying) return;
 
         score++;
         scoreDisplay.textContent = score;
-        mole.style.display = 'none'; // Прячем при клике
+        
+        // При клике тоже прячем с анимацией
+        mole.classList.remove('mole-show');
+        mole.classList.add('mole-hide');
+        setTimeout(() => { mole.style.display = 'none'; }, 200);
     });
 }
