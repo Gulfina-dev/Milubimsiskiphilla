@@ -47,6 +47,38 @@
             <div style="position: absolute; bottom: -20px; right: 20px; font-size: 5rem; color: var(--menu); opacity: 0.3; font-family: serif;">”</div>
         </section>
 
+         <!-- Картинка hb.jpg -->
+        <section class="art-gallery" style="margin-bottom: 50px;">
+            <div class="art-frame" style="max-width: 500px;">
+                <img src="images/hb.jpg" alt="С днём рождения!">
+            </div>
+        </section>
+
+        <!-- МЕСТО ДЛЯ ИГРЫ (сюда вставим код, когда ты выберешь) -->
+                <!-- МИНИ-ИГРА "ПОЙМАЙ НУЛЬ" -->
+        <section id="mini-game-container" style="text-align: center; margin-top: 60px; margin-bottom: 60px;">
+            <h3 style="font-family: 'Special Elite', serif; font-size: 2rem; color: var(--yellow); margin-bottom: 10px;">Поймай Нуля!</h3>
+            <p style="font-family: 'Montserrat', sans-serif; color: var(--text); margin-bottom: 20px;">
+                Успей кликнуть по голове Нуля, пока она не исчезла. Сможешь поймать 10 штук?
+            </p>
+            
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 1.5rem; color: var(--text); font-weight: bold; margin-bottom: 20px;">
+                Счёт: <span id="score" style="color: var(--yellow);">0</span> / 10
+            </div>
+
+            <!-- Игровое поле -->
+            <div id="game-area" style="width: 100%; max-width: 600px; height: 400px; margin: 0 auto; background-color: rgba(42, 18, 21, 0.8); border: 2px solid var(--menu); border-radius: 20px; position: relative; overflow: hidden; display: none;">
+                <img src="images/gol.png" id="mole" style="width: 100px; height: 100px; position: absolute; cursor: pointer; display: none; object-fit: contain;">
+                <!-- Текст при окончании игры -->
+                <div id="game-over-text" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Caveat', cursive; font-size: 3rem; color: var(--yellow); text-align: center; width: 100%;">
+                    Ты поймал Нуля!<br>Ты лучший! 💛
+                </div>
+            </div>
+
+            <!-- Кнопка старта -->
+            <button id="start-game-btn" class="casino-btn" style="width: 120px; height: 120px; font-size: 1.2rem; margin-top: 20px;">ИГРАТЬ</button>
+        </section>
+
         <div class="back-link"><a href="index.html">← Вернуться на главную</a></div>
     </main>
     <script src="script.js"></script>
