@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Диша</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,6 +12,7 @@
         <button class="burger" id="burgerBtn"><span></span><span></span><span></span></button>
         <h1 class="site-title">НУЛЬ КАКАШКА</h1>
     </header>
+
     <nav class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>Меню</h2><button class="close-btn" id="closeBtn">&times;</button></div>
         <ul class="menu-list">
@@ -28,12 +29,33 @@
 
     <main class="content">
         <section class="page-header">
-            <h2>Диша <span>💫</span></h2>
-            <p>Страничка Диши</p>
+            <h2>Новинки от Диши <span>💖</span></h2>
+            <p>Специально для тебя!</p>
         </section>
+
+        <!-- Красивое текстовое поздравление -->
+        <section style="background: rgba(42, 18, 21, 0.8); border: 2px solid var(--menu); border-radius: 20px; padding: 40px; max-width: 700px; margin: 0 auto 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;">
+            <p style="font-family: 'Caveat', cursive; font-size: 2rem; line-height: 1.4; color: var(--text);">
+                НУЛЬ НУЛЬ НУЛЬ С ДРРРР 🥳<br><br>
+                Тиии очень очень хороший друг, я очень рада, что смогла поучаствовать в процессе создания твоего подарка!!! Ты очень очень красиво рисуешь, желаю тебе только большоооого прогресса иии ваще, чтобы у тебя все очень хорошо и круто было!! 🥚🥚🥚
+            </p>
+        </section>
+
+        <!-- Кнопка на стикерпак -->
+        <div style="text-align: center; margin-bottom: 50px;">
+            <a href="https://t.me/addstickers/sti_79909_by_TgEmodziBot" target="_blank" style="background-color: #2AABEE; color: white; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(42, 171, 238, 0.4); display: inline-block; transition: 0.3s;">
+                🎁 Забрать стикерпак в Telegram
+            </a>
+        </div>
+
+        <!-- Стикеры от Диши -->
         <section class="art-gallery">
-            <!-- Сюда потом вставишь картинки -->
+            <div class="art-frame"><img src="images/d1.PNG" alt="Стикер 1"></div>
+            <div class="art-frame"><img src="images/d2.PNG" alt="Стикер 2"></div>
+            <div class="art-frame"><img src="images/d3.PNG" alt="Стикер 3"></div>
+            <div class="art-frame"><img src="images/d4.PNG" alt="Стикер 4"></div>
         </section>
+
         <div class="back-link"><a href="index.html">← Вернуться на главную</a></div>
     </main>
     <script src="script.js"></script>
