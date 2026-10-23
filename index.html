@@ -30,13 +30,32 @@
     <main class="content">
         <section class="hero">
             <div class="gif-container">
-                <!-- Твоя гифка -->
+                <!-- Гифка -->
                 <img src="images/gif.png" alt="Гифка" class="welcome-gif">
             </div>
             <h2 class="hero-title">С твоим днём!</h2>
-            <p class="hero-subtitle">Этот сайт сделан специально для тебя.</p>
+            <p class="hero-subtitle">Открой меню слева, чтобы увидеть поздравления.</p>
         </section>
+
+        <!-- КАЗИК (СЛОТ-МАШИНА) -->
+        <div class="machine-wrapper">
+            <div class="slot-machine">
+                <div class="machine-body">
+                    <h3 class="machine-title">LUCKY BIRTHDAY</h3>
+                    <div class="screen">
+                        <div class="slots-container">
+                            <div class="slot" id="slot1">🍒</div>
+                            <div class="slot" id="slot2">💎</div>
+                            <div class="slot" id="slot3">🍋</div>
+                        </div>
+                    </div>
+                    <div class="slot-message" id="slot-message">Нажми SPIN!</div>
+                </div>
+                <button id="spin-btn" class="casino-btn">SPIN</button>
+            </div>
+        </div>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
