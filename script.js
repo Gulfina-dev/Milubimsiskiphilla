@@ -218,11 +218,14 @@ if (startGameBtn) {
         gameArea.style.display = 'block'; 
 
         const showMole = () => {
-            if (score >= 10) {
+                        if (score >= 10) {
                 clearInterval(gameInterval);
                 mole.style.display = 'none';
                 gameOverText.style.display = 'block';
                 isPlaying = false;
+                
+                // ЗАПУСКАЕМ САЛЮТ!
+                startFireworks();
                 
                 setTimeout(() => {
                     startGameBtn.style.display = 'block';
