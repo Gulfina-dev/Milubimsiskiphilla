@@ -34,6 +34,28 @@
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
+
+                /* Красивая вишневая кнопка для игры */
+        #start-game-btn {
+            background: linear-gradient(145deg, #8c2c13, #4a1a22) !important; /* Теплый вишнево-оранжевый градиент */
+            border: 3px solid var(--menu) !important; /* Оранжевая рамка */
+            color: var(--text) !important;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important; /* Мягкая тень, без черного космоса */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+        
+        /* Эффект при наведении и нажатии */
+        #start-game-btn:hover {
+            background: linear-gradient(145deg, #a83417, #5a202a) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.6) !important;
+        }
+        
+        #start-game-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.5) !important;
+        }
     </style>
 </head>
 <body>
