@@ -237,26 +237,45 @@ body {
 .garland {
     display: flex;
     justify-content: space-around;
-    padding: 20px 10px;
-    position: absolute; /* Чтобы висела поверх фона */
-    top: 0;
+    padding: 10px 20px;
+    position: fixed; /* Фиксируем, чтобы она всегда была сверху */
+    top: 80px; /* Опускаем чуть ниже верхней оранжевой шапки (она у тебя 80px высотой) */
     left: 0;
     width: 100%;
-    z-index: 50;
+    z-index: 9999; /* Поднимаем на самый верхний слой, чтобы точно было видно */
+    pointer-events: none; /* Чтобы не мешала кликать по сайту */
 }
 
 .bulb-garland {
-    width: 20px;
-    height: 30px;
+    width: 15px;
+    height: 25px;
     border-radius: 50% 50% 40% 40%;
     animation: glowGarland 2s infinite alternate;
     box-shadow: inset 0 -5px 10px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+/* Ниточки, на которых висят лампочки (для красоты) */
+.bulb-garland::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: rgba(255,255,255,0.3);
+    transform: translateX(-50%);
 }
 
 .bulb-garland.red { background: #ff2e63; box-shadow: 0 0 15px #ff2e63; }
 .bulb-garland.yellow { background: #ffd700; box-shadow: 0 0 15px #ffd700; }
 .bulb-garland.purple { background: #a259ff; box-shadow: 0 0 15px #a259ff; }
 .bulb-garland.blue { background: #4d9fff; box-shadow: 0 0 15px #4d9fff; }
+
+@keyframes glowGarland {
+    0% { opacity: 0.6; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
 
 @keyframes glowGarland {
     0% { opacity: 0.5; transform: scale(0.9); }
