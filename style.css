@@ -202,3 +202,13 @@ body {
 .mole-hide {
     animation: popOut 0.2s ease-in forwards;
 }
+
+.art-frame img { 
+    width: 100%; 
+    height: auto; 
+    border-radius: 12px; 
+    display: block; 
+    object-fit: cover; 
+    /* ВОТ НАША АНИМАЦИЯ */
+    animation: floatImage 6s ease-in-out infinite; 
+}
