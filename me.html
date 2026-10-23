@@ -6,6 +6,34 @@
     <title>Лично от меня</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .me-text-box {
+            background: rgba(42, 18, 21, 0.85);
+            border: 2px solid var(--menu);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            position: relative;
+        }
+        .me-image-frame {
+            background: transparent;
+            max-width: 500px;
+            margin: 0 auto 60px auto;
+        }
+        .me-image-frame img {
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 3px solid var(--menu);
+            display: block;
+            width: 100%;
+        }
+        /* Задержки для появления блоков */
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
 </head>
 <body>
     <header class="top-bar">
@@ -28,58 +56,43 @@
     <div class="overlay" id="overlay"></div>
 
     <main class="content">
-        <section class="page-header">
+        <section class="page-header animate-on-scroll">
             <h2>Лично от меня <span>💌</span></h2>
         </section>
 
-        <section style="background: rgba(42, 18, 21, 0.8); border: 2px solid var(--menu); border-radius: 20px; padding: 50px; max-width: 700px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;">
-            
-            <!-- Декор в виде кавычек -->
+        <section class="me-text-box animate-on-scroll delay-1">
             <div style="position: absolute; top: 10px; left: 20px; font-size: 5rem; color: var(--menu); opacity: 0.3; font-family: serif;">“</div>
-            
-            <p style="font-family: 'Caveat', cursive; font-size: 2rem; line-height: 1.4; color: var(--text); text-align: center;">
+            <p style="font-family: 'Caveat', cursive; font-size: 2rem; line-height: 1.4; color: var(--text); text-align: center; margin: 0;">
                 Поздравляю, Нуль, с днём рождения! 🎉<br><br>
                 Я была очень рада делать для тебя этот сайт! Надеюсь, всё понравится) <br><br>
                 У тебя супер классные друзья, дорожи ими. <br>
                 Пусть этот год принесёт тебе море вдохновения, крутых рисунков и счастья!
             </p>
-            
             <div style="position: absolute; bottom: -20px; right: 20px; font-size: 5rem; color: var(--menu); opacity: 0.3; font-family: serif;">”</div>
         </section>
 
-         <!-- Картинка hb.jpg -->
-        <section class="art-gallery" style="margin-bottom: 50px;">
-            <div class="art-frame" style="max-width: 500px;">
-                <img src="images/hb.jpg" alt="С днём рождения!">
-            </div>
+        <section class="art-gallery me-image-frame animate-on-scroll delay-2">
+            <img src="images/hb.jpg" alt="С днём рождения!">
         </section>
 
-        <!-- МЕСТО ДЛЯ ИГРЫ (сюда вставим код, когда ты выберешь) -->
-                <!-- МИНИ-ИГРА "ПОЙМАЙ НУЛЬ" -->
-        <section id="mini-game-container" style="text-align: center; margin-top: 60px; margin-bottom: 60px;">
-            <h3 style="font-family: 'Special Elite', serif; font-size: 2rem; color: var(--yellow); margin-bottom: 10px;">Поймай Нуля!</h3>
-            <p style="font-family: 'Montserrat', sans-serif; color: var(--text); margin-bottom: 20px;">
-                Успей кликнуть по голове Нуля, пока она не исчезла. Сможешь поймать 10 штук?
+        <section id="mini-game-container" class="animate-on-scroll delay-3" style="text-align: center; margin-bottom: 60px;">
+            <h3 style="font-family: 'Special Elite', serif; font-size: 2.5rem; color: var(--yellow); margin-bottom: 10px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);">Поймай Лин!</h3>
+            <p style="font-family: 'Montserrat', sans-serif; color: var(--text); margin-bottom: 20px; font-size: 1.1rem;">
+                Успей кликнуть по голове Лин, пока она не исчезла. Сможешь поймать 10 штук?
             </p>
-            
             <div style="font-family: 'Montserrat', sans-serif; font-size: 1.5rem; color: var(--text); font-weight: bold; margin-bottom: 20px;">
                 Счёт: <span id="score" style="color: var(--yellow);">0</span> / 10
             </div>
-
-            <!-- Игровое поле -->
-            <div id="game-area" style="width: 100%; max-width: 600px; height: 400px; margin: 0 auto; background-color: rgba(42, 18, 21, 0.8); border: 2px solid var(--menu); border-radius: 20px; position: relative; overflow: hidden; display: none;">
-                <img src="images/gol.png" id="mole" style="width: 100px; height: 100px; position: absolute; cursor: pointer; display: none; object-fit: contain;">
-                <!-- Текст при окончании игры -->
+            <div id="game-area" style="width: 100%; max-width: 600px; height: 400px; margin: 0 auto; background-color: rgba(42, 18, 21, 0.9); border: 3px solid var(--menu); border-radius: 20px; position: relative; overflow: hidden; display: none; box-shadow: inset 0 0 40px rgba(0,0,0,1);">
+                <img src="images/gol.png" id="mole" style="width: 100px; height: 100px; position: absolute; cursor: pointer; display: none; object-fit: contain; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));">
                 <div id="game-over-text" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Caveat', cursive; font-size: 3rem; color: var(--yellow); text-align: center; width: 100%;">
-                    Ты поймал Нуля!<br>Ты лучший! 💛
+                    Ты поймал Лин!<br>Ты лучший! 💛
                 </div>
             </div>
-
-            <!-- Кнопка старта -->
-            <button id="start-game-btn" class="casino-btn" style="width: 120px; height: 120px; font-size: 1.2rem; margin-top: 20px;">ИГРАТЬ</button>
+            <button id="start-game-btn" class="casino-btn" style="width: 130px; height: 130px; font-size: 1.3rem; margin-top: 30px;">ИГРАТЬ</button>
         </section>
 
-        <div class="back-link"><a href="index.html">← Вернуться на главную</a></div>
+        <div class="back-link animate-on-scroll delay-3"><a href="index.html">← Вернуться на главную</a></div>
     </main>
     <script src="script.js"></script>
 </body>
