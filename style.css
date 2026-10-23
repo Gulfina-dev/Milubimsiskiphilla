@@ -232,3 +232,33 @@ body {
 .art-frame:nth-child(2) { animation-delay: 1.5s; }
 .art-frame:nth-child(3) { animation-delay: 3s; }
 .art-frame:nth-child(4) { animation-delay: 4.5s; }
+
+/* Гирлянда на главной */
+.garland {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 10px;
+    position: absolute; /* Чтобы висела поверх фона */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
+
+.bulb-garland {
+    width: 20px;
+    height: 30px;
+    border-radius: 50% 50% 40% 40%;
+    animation: glowGarland 2s infinite alternate;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.5);
+}
+
+.bulb-garland.red { background: #ff2e63; box-shadow: 0 0 15px #ff2e63; }
+.bulb-garland.yellow { background: #ffd700; box-shadow: 0 0 15px #ffd700; }
+.bulb-garland.purple { background: #a259ff; box-shadow: 0 0 15px #a259ff; }
+.bulb-garland.blue { background: #4d9fff; box-shadow: 0 0 15px #4d9fff; }
+
+@keyframes glowGarland {
+    0% { opacity: 0.5; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
