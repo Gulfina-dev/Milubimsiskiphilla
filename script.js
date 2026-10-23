@@ -7,10 +7,19 @@ const overlay = document.getElementById('overlay');
 function openMenu() {
     sideMenu.classList.add('open');
     overlay.classList.add('active');
+    
+    // Прячем гирлянду при открытии меню
+    const garland = document.querySelector('.garland');
+    if (garland) garland.style.display = 'none'; 
 }
+
 function closeMenu() {
     sideMenu.classList.remove('open');
     overlay.classList.remove('active');
+    
+    // Возвращаем гирлянду при закрытии меню
+    const garland = document.querySelector('.garland');
+    if (garland) garland.style.display = 'flex'; 
 }
 if (burgerBtn) {
     burgerBtn.addEventListener('click', openMenu);
