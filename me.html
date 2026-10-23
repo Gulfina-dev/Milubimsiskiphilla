@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Лично от меня</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,6 +12,7 @@
         <button class="burger" id="burgerBtn"><span></span><span></span><span></span></button>
         <h1 class="site-title">НУЛЬ КАКАШКА</h1>
     </header>
+
     <nav class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>Меню</h2><button class="close-btn" id="closeBtn">&times;</button></div>
         <ul class="menu-list">
@@ -21,7 +22,7 @@
             <li><a href="disha.html">Диша</a></li>
             <li><a href="vitelka.html">Вителька</a></li>
             <li><a href="probel.html">Пробел</a></li>
-            <li><a href="me.html">Лично от меня</a></li>
+            <li><a href="me.html">От разработчика</a></li>
         </ul>
     </nav>
     <div class="overlay" id="overlay"></div>
@@ -29,11 +30,23 @@
     <main class="content">
         <section class="page-header">
             <h2>Лично от меня <span>💌</span></h2>
-            <p>Тут мое личное поздравление для тебя.</p>
         </section>
-        <section class="art-gallery">
-            <!-- Сюда вставишь текст или картинку -->
+
+        <section style="background: rgba(42, 18, 21, 0.8); border: 2px solid var(--menu); border-radius: 20px; padding: 50px; max-width: 700px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;">
+            
+            <!-- Декор в виде кавычек -->
+            <div style="position: absolute; top: 10px; left: 20px; font-size: 5rem; color: var(--menu); opacity: 0.3; font-family: serif;">“</div>
+            
+            <p style="font-family: 'Caveat', cursive; font-size: 2rem; line-height: 1.4; color: var(--text); text-align: center;">
+                Поздравляю, Нуль, с днём рождения! 🎉<br><br>
+                Я была очень рада делать для тебя этот сайт! Надеюсь, всё понравится) <br><br>
+                У тебя супер классные друзья, дорожи ими. <br>
+                Пусть этот год принесёт тебе море вдохновения, крутых рисунков и счастья!
+            </p>
+            
+            <div style="position: absolute; bottom: -20px; right: 20px; font-size: 5rem; color: var(--menu); opacity: 0.3; font-family: serif;">”</div>
         </section>
+
         <div class="back-link"><a href="index.html">← Вернуться на главную</a></div>
     </main>
     <script src="script.js"></script>
